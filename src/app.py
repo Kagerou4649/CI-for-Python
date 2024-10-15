@@ -39,7 +39,7 @@ def hello():
     counter = Counter.query.first()
     counter.value += 1
     db.session.commit()
-    return r'''
+    return f'''
     Docker is Awesome! My ENV var is: {app_env}<br>
     Page reload count: {counter.value}<br>
 <pre>                   ##        .</pre>
