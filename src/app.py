@@ -18,7 +18,6 @@ app.config["SQLALCHEMY_DATABASE_URI"] = connection_string
 db = SQLAlchemy(app)
 
 
-
 # Define a Counter model
 class Counter(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -40,7 +39,7 @@ def hello():
     counter = Counter.query.first()
     counter.value += 1
     db.session.commit()
-    return f'''
+    return r'''
     Docker is Awesome! My ENV var is: {app_env}<br>
     Page reload count: {counter.value}<br>
 <pre>                   ##        .</pre>
@@ -80,10 +79,10 @@ def external_call():
     try:
         response = requests.get(external_url)
         return Response(
-            f"External call response: {response.text}", status=response.status_code # noqa: E501
+            f"External call response: {response.text}", status=response.status_code  # noqa: E501
         )
     except Exception as e:
-        return Response(f"Error calling external endpoint: {str(e)}", status=500) # noqa: E501
+        return Response(f"Error calling external endpoint: {str(e)}", status=500)  # noqa: E501
 
 
 if __name__ == "__main__":
