@@ -17,7 +17,7 @@ env:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   python-ci:
-    # The type of runner that the job will run on
+    name: Python CI
     runs-on: ubuntu-latest
 
     defaults:
@@ -54,14 +54,17 @@ jobs:
           pytest -v --cov=. --cov-report=term-missing --cov-report=json
 
       - name: Upload python artifacts
+        if: ${{ github.ref_name == 'main' }}
         uses: actions/upload-artifact@v4
         with:
           name: python-artifacts
           path: .
 
   build-image:
+   name: Build and Push Image
    needs: python-ci
    runs-on: ubuntu-latest
+   if: ${{ github.ref_name == 'main' }}
 
    steps:
    - uses: actions/download-artifact@v4
