@@ -1,0 +1,4 @@
+configs:
+ MYSQL_ROOT_PASSWORD: "MyPassword"
+ MYSQL_USER: "User"
+ MYSQL_PASSWORD: "MyPass"
