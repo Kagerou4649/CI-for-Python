@@ -115,7 +115,7 @@ jobs:
 
     - name: Package Helm
       run: helm package ./kube2py/
-    
+
     - name: Upload Helm package
       uses: actions/upload-artifact@v4
       with:
